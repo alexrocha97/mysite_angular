@@ -14,7 +14,11 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, public loginService : LoginService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    public loginService : LoginService) 
+  { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -29,14 +33,15 @@ export class LoginComponent implements OnInit {
   {
     debugger
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    this.loginService.LoginUsuario(dadosLogin).subscribe(
-      token=>{
-        debugger
-        var nossoToken = Token
-      },
-      erro=>{
+    // this.loginService.LoginUsuario(dadosLogin).subscribe(
+    //   token=>{
+    //     debugger
+    //     var nossoToken = Token
+    //   },
+    //   erro=>{
         
-      }
-    )
+    //   }
+    // )
+    this.router.navigate(["/noticias"]);
   }
 }
