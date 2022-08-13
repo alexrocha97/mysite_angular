@@ -1,20 +1,18 @@
 <app-navbar></app-navbar>
 <div class="conteudo-noticia">
     <div class="lista-noticias">
-        <ng-container *ngFor="let item of listanoticias">
+        <ng-container *ngFor="let item of noticias">
             <div class="noticia">
                 <div class="cabecalho-noticias">
                     <div class="data-noticia">
-                        Date : 11/10/2022
+                        Date : {{item.dataCadastro}}
                     </div>
                     <div class="usuario-noticia">
-                        Alex Ventura
+                        {{item.titulo}}
                     </div>
                 </div>
                 <div class="texto-noticia">
-                    Olá mundo,Lorem ipsum dolor sit amet. 
-                    Eos dolorem necessitatibus ea vero labore qui minus consequatur 
-                    ut quis esse eum iusto repellendus.
+                    {{item.informacao}}
                 </div>
             </div>
         </ng-container>

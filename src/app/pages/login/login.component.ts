@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { LoginModel } from 'src/app/Models/LoginModel';
+import { AutenticaService } from 'src/app/Services/Autentica.service';
 import { LoginService } from 'src/app/Services/login-service';
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router, 
-    public loginService : LoginService) 
+    public loginService : LoginService,
+    private autenticaService: AutenticaService) 
   { }
 
   ngOnInit(): void {
@@ -31,17 +33,17 @@ export class LoginComponent implements OnInit {
 
   submitLogin()
   {
-    debugger
     var dadosLogin = this.loginForm.getRawValue() as LoginModel;
-    // this.loginService.LoginUsuario(dadosLogin).subscribe(
-    //   token=>{
-    //     debugger
-    //     var nossoToken = Token
-    //   },
-    //   erro=>{
+    this.loginService.LoginUsuario(dadosLogin).subscribe(
+      token=>{
+        debugger
+        var nossoToken = Token
+        this.autenticaService.DefinirToken(token)
+        this.router.navigate(["/noticias"]);
+      },
+      erro=>{
         
-    //   }
-    // )
-    this.router.navigate(["/noticias"]);
+      }
+    )
   }
 }
